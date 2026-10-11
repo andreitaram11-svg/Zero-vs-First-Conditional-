@@ -1,0 +1,6 @@
+{
+  "name": "Professor Hoot: Zero vs First Conditional Academy",
+  "description": "Master Zero and First Conditionals in English through lively school and recess scenarios, interactive vocabulary, video lessons, and 4 graded grammar games with Professor Hoot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
