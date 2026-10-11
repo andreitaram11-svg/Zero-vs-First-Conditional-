@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { VideoLesson } from '../types';
 import { VIDEO_LESSONS } from '../data/curriculum';
-import { Play, Pause, SkipForward, SkipBack, Volume2, Sparkles, CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react';
+import { Play, Pause, SkipForward, SkipBack, Volume2, Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
 import { sound, speakSentence, stopSpeaking } from '../utils/audio';
 
 interface InteractiveVideoLessonProps {
@@ -20,7 +20,6 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
   const scene = lesson.scenes[currentSceneIndex];
   const isLastScene = currentSceneIndex === lesson.scenes.length - 1;
 
-  // Speak current dialogue when playing
   const speakCurrentScene = () => {
     sound.playClick();
     speakSentence(`${scene.speaker} says: ${scene.text}`, {
@@ -98,34 +97,34 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
   return (
     <div className="space-y-6">
       {/* Header Deck */}
-      <div className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-8 shadow-xs">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+      <div className="cyber-card rounded-3xl border border-cyan-500/30 shadow-xl p-6 sm:p-8 text-white">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-700/60 pb-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-800 bg-sky-100/70 px-2.5 py-0.5 rounded-md mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 bg-cyan-500/15 px-3 py-1 rounded-full border border-cyan-400/30 mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
               <span>Multimedia Video & Classroom Dialogue</span>
             </div>
             <div className="animate-title-float">
-              <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight flex items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-white tracking-tight flex items-center gap-2">
                 <span>Interactive Video Classroom</span>
                 <span className="text-2xl animate-gentle-wiggle">🎬</span>
               </h2>
             </div>
-            <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+            <p className="text-sm text-slate-300 mt-1 max-w-2xl">
               Experience situational dialogues with synchronized spoken audio, visual school settings, and real-time comprehension checkpoints!
             </p>
           </div>
 
           {/* Episode Switcher */}
-          <div className="flex items-center gap-1.5 p-1 bg-amber-100/80 rounded-xl">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800">
             {VIDEO_LESSONS.map((vLesson, idx) => (
               <button
                 key={vLesson.id}
                 onClick={() => handleSwitchLesson(idx)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
                   activeLessonIndex === idx
-                    ? 'bg-white text-slate-900 shadow-xs'
-                    : 'text-amber-900 hover:text-amber-950'
+                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-cyan-500/30 border border-cyan-400/50'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
                 }`}
               >
                 Episode {idx + 1}
@@ -135,7 +134,7 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
         </div>
 
         {/* Video Stage Frame */}
-        <div className="mt-6 rounded-2xl overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-md">
+        <div className="mt-6 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-xl">
           {/* Visual Scene Canvas */}
           <div className="relative aspect-video max-h-[460px] w-full overflow-hidden bg-slate-900 flex items-center justify-center">
             <img
@@ -147,24 +146,24 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
 
             {/* Top Scene Overlay Badge */}
             <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-900/85 text-white backdrop-blur-md border border-white/20">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-950/85 text-white backdrop-blur-md border border-white/20">
                 {lesson.title}
               </span>
-              <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/90 text-amber-950">
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-blue-500 text-white shadow-sm">
                 Scene {currentSceneIndex + 1} of {lesson.scenes.length}
               </span>
             </div>
 
             {/* Dialogue Bubble Overlay on Top of Scene */}
-            <div className="absolute bottom-4 left-4 right-4 z-20 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 sm:p-5 text-white shadow-xl">
+            <div className="absolute bottom-4 left-4 right-4 z-20 bg-slate-950/90 backdrop-blur-md border border-slate-800 rounded-2xl p-4 sm:p-5 text-white shadow-xl">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                  <span className="font-bold text-sm text-amber-300 font-display">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse" />
+                  <span className="font-bold text-sm text-blue-300 font-display">
                     {scene.speaker}
                   </span>
                   {scene.conditionalType && (
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30">
                       {scene.conditionalType === 'zero' ? 'ZERO CONDITIONAL' : 'FIRST CONDITIONAL'}
                     </span>
                   )}
@@ -175,11 +174,11 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
                     sound.playClick();
                     speakSentence(scene.text);
                   }}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 transition-colors flex items-center gap-1 text-xs"
+                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-300 transition-colors flex items-center gap-1.5 text-xs"
                   title="Listen to this line again"
                 >
                   <Volume2 className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Replay Line</span>
+                  <span className="hidden sm:inline font-semibold">Replay Line</span>
                 </button>
               </div>
 
@@ -188,8 +187,8 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
               </p>
 
               {scene.ruleCallout && (
-                <div className="mt-2.5 pt-2 border-t border-slate-700/80 text-xs text-amber-200/90 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <div className="mt-2.5 pt-2 border-t border-slate-800 text-xs text-blue-300/90 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   <span>{scene.ruleCallout}</span>
                 </div>
               )}
@@ -210,10 +209,10 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
 
               <button
                 onClick={handleTogglePlay}
-                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-2 transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all ${
                   isPlaying
-                    ? 'bg-amber-500 text-amber-950 hover:bg-amber-400'
-                    : 'bg-white text-slate-950 hover:bg-slate-200'
+                    ? 'bg-amber-400 text-slate-950 hover:bg-amber-300'
+                    : 'bg-blue-600 text-white hover:bg-blue-500 shadow-md shadow-blue-600/30'
                 }`}
               >
                 {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
@@ -242,7 +241,7 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
                   }}
                   className={`h-2.5 rounded-full transition-all ${
                     currentSceneIndex === idx
-                      ? 'w-8 bg-amber-400'
+                      ? 'w-8 bg-blue-400'
                       : 'w-2.5 bg-slate-700 hover:bg-slate-600'
                   }`}
                   title={`Go to scene ${idx + 1}`}
@@ -252,32 +251,32 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
           </div>
         </div>
 
-        {/* Checkpoint Question Section */}
-        <div className="mt-8 border-2 border-dashed border-amber-300 rounded-2xl p-6 bg-amber-50/50">
+        {/* Checkpoint Question Section: Consistent White Card */}
+        <div className="mt-8 border border-slate-200 rounded-2xl p-6 sm:p-7 bg-slate-50 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
-            <Sparkles className="w-5 h-5 text-amber-700" />
+            <Sparkles className="w-5 h-5 text-blue-600" />
             <h3 className="text-base font-bold font-display text-slate-900">
               Interactive Checkpoint Challenge (+25 pts)
             </h3>
           </div>
-          <p className="text-xs text-slate-700 mb-4 font-sans">
+          <p className="text-xs sm:text-sm text-slate-700 mb-4 font-sans leading-relaxed">
             {lesson.checkpointQuestion.question}
           </p>
 
-          <div className="space-y-2 mb-4">
+          <div className="space-y-2.5 mb-5">
             {lesson.checkpointQuestion.options.map((opt, idx) => {
               const isSelected = selectedAnswer === idx;
               const isCorrect = idx === lesson.checkpointQuestion.correctIndex;
 
-              let btnStyle = 'bg-white border-slate-200 text-slate-800 hover:border-amber-400';
+              let btnStyle = 'bg-white border-slate-200 text-slate-800 hover:border-blue-400';
               if (checkpointSubmitted) {
                 if (isCorrect) {
-                  btnStyle = 'bg-emerald-100 border-emerald-400 text-emerald-950 font-semibold';
+                  btnStyle = 'bg-emerald-50 border-emerald-400 text-emerald-950 font-semibold';
                 } else if (isSelected) {
-                  btnStyle = 'bg-rose-100 border-rose-400 text-rose-950 font-semibold';
+                  btnStyle = 'bg-rose-50 border-rose-400 text-rose-950 font-semibold';
                 }
               } else if (isSelected) {
-                btnStyle = 'bg-amber-100 border-amber-500 text-amber-950 font-semibold';
+                btnStyle = 'bg-blue-50 border-blue-500 text-blue-950 font-semibold';
               }
 
               return (
@@ -288,9 +287,9 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
                     sound.playClick();
                     setSelectedAnswer(idx);
                   }}
-                  className={`w-full text-left p-3 rounded-xl border text-xs transition-all flex items-start gap-2.5 ${btnStyle}`}
+                  className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm transition-all flex items-start gap-3 ${btnStyle}`}
                 >
-                  <span className="w-5 h-5 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center font-bold text-[10px] shrink-0">
+                  <span className="w-5 h-5 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <span className="leading-relaxed">{opt}</span>
@@ -300,27 +299,28 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
           </div>
 
           {!checkpointSubmitted ? (
+            /* Golden Yellow CTA Button */
             <button
               onClick={handleCheckpointSubmit}
               disabled={selectedAnswer === null}
-              className="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold rounded-xl transition-all shadow-xs"
+              className="px-6 py-3 bg-amber-400 hover:bg-amber-300 disabled:opacity-40 disabled:cursor-not-allowed text-slate-950 text-xs font-bold rounded-xl transition-all shadow-md shadow-amber-400/20 active:scale-95"
             >
               Verify Answer
             </button>
           ) : (
-            <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs">
-              <div className="flex items-center gap-2 mb-1">
+            <div className="p-4 rounded-xl bg-white border border-slate-200 text-xs shadow-2xs">
+              <div className="flex items-center gap-2 mb-1.5">
                 {selectedAnswer === lesson.checkpointQuestion.correctIndex ? (
-                  <span className="text-emerald-700 font-bold flex items-center gap-1">
+                  <span className="text-emerald-700 font-bold flex items-center gap-1.5 text-sm">
                     <CheckCircle2 className="w-4 h-4" /> Correct deduction! (+25 bonus points)
                   </span>
                 ) : (
-                  <span className="text-rose-700 font-bold flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" /> Not quite right!
+                  <span className="text-rose-700 font-bold flex items-center gap-1.5 text-sm">
+                    <AlertCircle className="w-4 h-4" /> Review the Rule:
                   </span>
                 )}
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed pl-5">
                 {lesson.checkpointQuestion.explanation}
               </p>
             </div>

@@ -79,18 +79,17 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
     setIsCorrect(false);
   };
 
-  // Reconstructed completed sentence for pronunciation
   const completedSentence = currentQ.sentenceTemplate
     .replace('{blank1}', currentQ.correct1)
     .replace('{blank2}', currentQ.correct2);
 
   return (
     <div className="space-y-6">
-      {/* Header Deck */}
-      <div className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-8 shadow-xs">
+      {/* Header Deck: Clean White Card */}
+      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-800 bg-indigo-100/70 px-2.5 py-0.5 rounded-md mb-2">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-700 bg-violet-50 px-3 py-1 rounded-full border border-violet-200 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Game 4 · Conjugation & Fill the Blanks</span>
             </div>
@@ -103,12 +102,12 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-amber-900 bg-amber-100 px-3 py-1.5 rounded-xl">
+            <span className="text-xs font-mono font-bold text-violet-700 bg-violet-50 border border-violet-200 px-3.5 py-1.5 rounded-xl">
               Question {currentIndex + 1} / {COMPLETE_QUESTIONS.length}
             </span>
             <button
               onClick={handleRestart}
-              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors"
+              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors border border-slate-200"
               title="Restart Quiz"
             >
               <RotateCcw className="w-4 h-4" />
@@ -118,13 +117,13 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
 
         {/* Challenge Box */}
         <div className="mt-6">
-          <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs sm:text-sm mb-6">
-            <span className="font-bold text-amber-950 font-display block text-sm">
+          <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm mb-6">
+            <span className="font-bold text-slate-900 font-display block text-sm">
               Context: {currentQ.scenario}
             </span>
-            <div className="mt-1 flex items-center gap-2 text-xs text-amber-800">
-              <span className="font-bold uppercase tracking-wide">Type:</span>
-              <span className="bg-amber-200/70 px-2 py-0.5 rounded font-mono font-bold">
+            <div className="mt-1.5 flex items-center gap-2 text-xs text-slate-600">
+              <span className="font-semibold uppercase tracking-wide">Type:</span>
+              <span className="bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 rounded-md font-mono font-bold">
                 {currentQ.type.toUpperCase()} CONDITIONAL
               </span>
             </div>
@@ -134,7 +133,6 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
             <div className="text-sm sm:text-base text-slate-800 font-sans leading-relaxed">
               <span>If ... </span>
-              {/* Template split presentation */}
               <div className="inline-block mx-1">
                 <div className="flex items-center gap-1.5 inline-flex">
                   <input
@@ -143,7 +141,7 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
                     value={blank1Input}
                     onChange={(e) => setBlank1Input(e.target.value)}
                     placeholder={`[${currentQ.verb1Hint}]`}
-                    className={`px-3 py-1.5 text-xs sm:text-sm font-bold rounded-xl border text-center min-w-[120px] focus:outline-none focus:ring-2 focus:ring-amber-500 transition-colors ${
+                    className={`px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl border text-center min-w-[130px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs ${
                       isSubmitted
                         ? blank1Input.trim().toLowerCase() === currentQ.correct1.toLowerCase()
                           ? 'bg-emerald-100 border-emerald-400 text-emerald-950'
@@ -167,7 +165,7 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
                     value={blank2Input}
                     onChange={(e) => setBlank2Input(e.target.value)}
                     placeholder={`[${currentQ.verb2Hint}]`}
-                    className={`px-3 py-1.5 text-xs sm:text-sm font-bold rounded-xl border text-center min-w-[130px] focus:outline-none focus:ring-2 focus:ring-amber-500 transition-colors ${
+                    className={`px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl border text-center min-w-[140px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs ${
                       isSubmitted
                         ? blank2Input.trim().toLowerCase() === currentQ.correct2.toLowerCase()
                           ? 'bg-emerald-100 border-emerald-400 text-emerald-950'
@@ -182,21 +180,21 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
               </div>
             </div>
 
-            {/* Quick helper shortcuts */}
+            {/* Quick Helper Suggestions */}
             {!isSubmitted && (
               <div className="pt-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                <span className="font-semibold text-slate-700">Quick suggestions:</span>
+                <span className="font-semibold text-slate-700">Quick options:</span>
                 <button
                   type="button"
                   onClick={() => setBlank1Input(currentQ.correct1)}
-                  className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
+                  className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 shadow-2xs transition-colors"
                 >
                   Insert "{currentQ.correct1}"
                 </button>
                 <button
                   type="button"
                   onClick={() => setBlank2Input(currentQ.correct2)}
-                  className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
+                  className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 shadow-2xs transition-colors"
                 >
                   Insert "{currentQ.correct2}"
                 </button>
@@ -205,22 +203,24 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
           </div>
         </div>
 
-        {/* Action Button */}
+        {/* Action Controls */}
         <div className="mt-6 flex flex-wrap items-center gap-3">
           {!isSubmitted ? (
+            /* Golden Yellow Primary Action Button */
             <button
               onClick={handleVerify}
               disabled={!blank1Input.trim() || !blank2Input.trim()}
-              className="px-6 py-2.5 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold rounded-xl transition-all shadow-xs"
+              className="px-7 py-3 bg-amber-400 hover:bg-amber-300 disabled:opacity-40 disabled:cursor-not-allowed text-slate-950 text-xs font-bold rounded-xl transition-all shadow-md shadow-amber-400/20 active:scale-95"
             >
               Check Conjugations
             </button>
           ) : (
             <div className="flex items-center gap-3">
               {currentIndex < COMPLETE_QUESTIONS.length - 1 ? (
+                /* Electric Blue Button */
                 <button
                   onClick={handleNext}
-                  className="px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition-all shadow-xs flex items-center gap-2"
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-all shadow-md shadow-blue-600/30 flex items-center gap-2 active:scale-95"
                 >
                   <span>Next Sentence</span>
                   <ArrowRight className="w-4 h-4" />
@@ -228,7 +228,7 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
               ) : (
                 <button
                   onClick={handleRestart}
-                  className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all shadow-xs"
+                  className="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold rounded-xl transition-all shadow-md active:scale-95"
                 >
                   Completed! Restart
                 </button>
@@ -236,10 +236,10 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
 
               <button
                 onClick={() => speakSentence(completedSentence)}
-                className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-medium rounded-xl transition-colors flex items-center gap-1.5"
+                className="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-medium rounded-xl transition-colors flex items-center gap-2 border border-slate-200"
                 title="Pronounce complete sentence"
               >
-                <Volume2 className="w-4 h-4" />
+                <Volume2 className="w-4 h-4 text-blue-600" />
                 <span>Hear Correct Sentence</span>
               </button>
             </div>
@@ -255,7 +255,7 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
                 : 'bg-rose-50 border-rose-300 text-rose-950'
             }`}
           >
-            <div className="flex items-start gap-2 mb-2">
+            <div className="flex items-start gap-2.5 mb-2">
               {isCorrect ? (
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
               ) : (
@@ -266,7 +266,7 @@ export const CompleteSentenceGame: React.FC<CompleteSentenceGameProps> = ({
                   {isCorrect ? 'Well done! (+20 pts)' : 'Conjugation Check:'}
                 </p>
                 <p className="mt-1 font-semibold text-slate-800">
-                  Correct answers: Blank 1 = <span className="underline font-mono">{currentQ.correct1}</span> | Blank 2 = <span className="underline font-mono">{currentQ.correct2}</span>
+                  Correct answers: Blank 1 = <span className="underline font-mono font-bold text-blue-700">{currentQ.correct1}</span> | Blank 2 = <span className="underline font-mono font-bold text-amber-600">{currentQ.correct2}</span>
                 </p>
               </div>
             </div>

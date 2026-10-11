@@ -20,25 +20,25 @@ export const PracticeHub: React.FC<PracticeHubProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Game Selector Sub-bar */}
-      <div className="bg-white rounded-3xl border border-amber-200/90 p-4 sm:p-5 shadow-xs flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-2 animate-title-float">
-          <Gamepad2 className="w-5 h-5 text-amber-700 animate-gentle-wiggle" />
-          <span className="font-extrabold font-display text-slate-900 text-sm sm:text-base">
-            Graded Practice Arcade 🎮
+      {/* Game Selector Sub-bar: Cyber Card */}
+      <div className="cyber-card rounded-3xl p-4 sm:p-5 shadow-xl border border-cyan-500/30 flex flex-wrap items-center justify-between gap-3 text-white">
+        <div className="flex items-center gap-2.5 animate-title-float">
+          <Gamepad2 className="w-5 h-5 text-cyan-400 animate-gentle-wiggle" />
+          <span className="font-extrabold font-display text-white text-sm sm:text-base">
+            Neural Practice Arcade 🎮
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
+        <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
           <button
             onClick={() => {
               sound.playClick();
               setActiveGame('match');
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
               activeGame === 'match'
-                ? 'bg-amber-600 text-white shadow-2xs'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-cyan-500/30 border border-cyan-400/50'
+                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700'
             }`}
           >
             <span>1. Match the Meaning</span>
@@ -49,10 +49,10 @@ export const PracticeHub: React.FC<PracticeHubProps> = ({
               sound.playClick();
               setActiveGame('order');
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
               activeGame === 'order'
-                ? 'bg-amber-600 text-white shadow-2xs'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-cyan-500/30 border border-cyan-400/50'
+                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700'
             }`}
           >
             <ListOrdered className="w-3.5 h-3.5" />
@@ -64,10 +64,10 @@ export const PracticeHub: React.FC<PracticeHubProps> = ({
               sound.playClick();
               setActiveGame('choice');
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
               activeGame === 'choice'
-                ? 'bg-amber-600 text-white shadow-2xs'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-cyan-500/30 border border-cyan-400/50'
+                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700'
             }`}
           >
             <CheckSquare className="w-3.5 h-3.5" />
@@ -79,10 +79,10 @@ export const PracticeHub: React.FC<PracticeHubProps> = ({
               sound.playClick();
               setActiveGame('complete');
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
               activeGame === 'complete'
-                ? 'bg-amber-600 text-white shadow-2xs'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-cyan-500/30 border border-cyan-400/50'
+                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700'
             }`}
           >
             <Edit3 className="w-3.5 h-3.5" />

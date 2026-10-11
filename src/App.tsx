@@ -66,8 +66,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative bg-linear-to-b from-amber-100/90 via-sky-50/70 to-emerald-50/70 text-slate-800 overflow-x-hidden">
-      {/* Playful School Classroom Background with Doodles, Sun, Pencils & Pennants */}
+    <div className="min-h-screen flex flex-col relative bg-[#070C1B] text-slate-100 overflow-x-hidden selection:bg-[#00F0FF] selection:text-[#070C1B]">
+      {/* Interactive Electronic Cyber Network Connections Background */}
       <ClassroomBackground />
 
       {/* Top Bar Navigation */}
@@ -82,8 +82,8 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 relative z-10">
-        {/* Interactive Guide Mascot (Professor Hoot) - Present across all sessions! */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 relative z-10">
+        {/* Interactive Guide Mascot (Professor Hoot) - Present across all sessions */}
         <ProfessorHoot
           currentTip={owlTip}
           reaction={owlReaction}
@@ -92,7 +92,11 @@ export default function App() {
 
         {/* Section Views */}
         {currentSection === 'instructions' && (
-          <InstructionsSection onStartLearning={handleNavigate} />
+          <InstructionsSection
+            onStartLearning={handleNavigate}
+            totalScore={totalScore}
+            maxScore={MAX_ACADEMY_SCORE}
+          />
         )}
 
         {currentSection === 'vocabulary' && (
@@ -123,20 +127,23 @@ export default function App() {
         maxScore={MAX_ACADEMY_SCORE}
       />
 
-      {/* Footer */}
-      <footer className="border-t border-amber-300/80 bg-white/90 backdrop-blur-xs py-6 text-xs text-amber-950 text-center relative z-10">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="font-semibold flex items-center justify-center gap-1.5">
-            <span>© Professor Hoot’s Grammar Academy</span>
-            <span>·</span>
-            <span>Zero vs. First Conditional Masterclass</span>
+      {/* Footer in #111827 matching the Academy Header */}
+      <footer className="border-t border-slate-800 bg-[#111827] text-slate-300 py-6 text-xs text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-semibold flex items-center justify-center gap-1.5 text-slate-200">
+            <span>© Professor Hoot’s Digital Academy</span>
+            <span className="text-slate-500">·</span>
+            <span className="text-[#3B82F6]">Zero vs. First Conditional Masterclass</span>
           </p>
-          <div className="flex items-center gap-4 text-amber-900/90 font-medium">
-            <span>🏫 Classroom Context</span>
-            <span aria-hidden="true">·</span>
-            <span>🇬🇧 All Lessons in English</span>
-            <span aria-hidden="true">·</span>
-            <span>🔔 Interactive Audio & Games</span>
+          <div className="flex items-center gap-3 text-slate-400 font-medium">
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB] inline-block" />
+              Digital ESL Academy
+            </span>
+            <span className="text-slate-600" aria-hidden="true">·</span>
+            <span>🇬🇧 100% English Curriculum</span>
+            <span className="text-slate-600" aria-hidden="true">·</span>
+            <span>🏆 Interactive Audio & Games</span>
           </div>
         </div>
       </footer>

@@ -54,29 +54,29 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
-      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border-4 border-amber-300 overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-slate-700/60 overflow-hidden flex flex-col max-h-[92vh]">
         {/* Header Action Bar */}
-        <div className="bg-amber-100/90 border-b border-amber-200 px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-bold text-amber-950">
-            <Award className="w-4 h-4 text-amber-700" />
+        <div className="bg-[#0B1120] border-b border-blue-900/40 px-6 py-3.5 flex items-center justify-between text-white">
+          <div className="flex items-center gap-2 text-xs font-bold text-white">
+            <Award className="w-4 h-4 text-amber-400" />
             <span>Official Academy Report Card & Certificate</span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="p-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-100 text-xs font-semibold flex items-center gap-1 shadow-2xs"
+              className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-colors"
               title="Print Certificate"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Print / Save</span>
+              <span>Print / Save</span>
             </button>
             <button
               onClick={() => {
                 sound.playClick();
                 onClose();
               }}
-              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-amber-200/60"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
