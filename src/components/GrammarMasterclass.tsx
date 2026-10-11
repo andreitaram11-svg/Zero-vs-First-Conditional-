@@ -51,9 +51,12 @@ export const GrammarMasterclass: React.FC = () => {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Theory, Formulas & Rules</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight">
-              Grammar Masterclass: Zero vs. First Conditional
-            </h2>
+            <div className="animate-title-float">
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight flex items-center gap-2">
+                <span>Grammar Masterclass: Zero vs. First Conditional</span>
+                <span className="text-2xl animate-gentle-wiggle">⚡</span>
+              </h2>
+            </div>
             <p className="text-sm text-slate-600 mt-1 max-w-2xl">
               Understand the core logic: when an event is a permanent fact or school rule versus when it is a specific real future possibility!
             </p>

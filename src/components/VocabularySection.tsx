@@ -47,9 +47,12 @@ export const VocabularySection: React.FC = () => {
               <BookOpen className="w-3.5 h-3.5" />
               <span>Vocabulary Bank & School Context</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight">
-              School Words & Conditional Sentences
-            </h2>
+            <div className="animate-title-float">
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight flex items-center gap-2">
+                <span>School Words & Conditional Sentences</span>
+                <span className="text-2xl animate-gentle-wiggle">📚</span>
+              </h2>
+            </div>
             <p className="text-sm text-slate-600 mt-1 max-w-2xl">
               Familiarize yourself with these core verbs and classroom nouns first. Every word includes native audio and contextual examples for both Zero and First conditionals!
             </p>

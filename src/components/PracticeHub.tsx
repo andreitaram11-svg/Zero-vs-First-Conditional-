@@ -22,10 +22,10 @@ export const PracticeHub: React.FC<PracticeHubProps> = ({
     <div className="space-y-6">
       {/* Game Selector Sub-bar */}
       <div className="bg-white rounded-3xl border border-amber-200/90 p-4 sm:p-5 shadow-xs flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <Gamepad2 className="w-5 h-5 text-amber-700" />
-          <span className="font-bold font-display text-slate-900 text-sm sm:text-base">
-            Graded Practice Arcade
+        <div className="flex items-center gap-2 animate-title-float">
+          <Gamepad2 className="w-5 h-5 text-amber-700 animate-gentle-wiggle" />
+          <span className="font-extrabold font-display text-slate-900 text-sm sm:text-base">
+            Graded Practice Arcade 🎮
           </span>
         </div>
 

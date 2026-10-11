@@ -54,7 +54,7 @@ export const ProfessorHoot: React.FC<ProfessorHootProps> = ({
       className={`bg-amber-100/90 border border-amber-300 rounded-2xl p-4 shadow-sm backdrop-blur-xs flex flex-col sm:flex-row items-center gap-4 transition-all ${className}`}
       aria-label="Professor Hoot Interactive Mascot"
     >
-      {/* Animated Avatar Container */}
+      {/* Freestanding Owl Character - Out of the circle & 1cm larger */}
       <div className="relative shrink-0 flex flex-col items-center">
         <div
           onClick={handleSpeak}
@@ -63,30 +63,36 @@ export const ProfessorHoot: React.FC<ProfessorHootProps> = ({
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') handleSpeak();
           }}
-          className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-amber-400 overflow-hidden cursor-pointer shadow-md bg-amber-50 group hover:scale-105 transition-transform ${
-            isSpeaking ? 'animate-gentle-bounce ring-4 ring-amber-400/50' : 'hover:rotate-2'
+          className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 cursor-pointer group transition-all duration-300 filter drop-shadow-md select-none ${
+            isSpeaking
+              ? 'animate-gentle-bounce scale-105'
+              : 'hover:scale-105 hover:-rotate-2'
           }`}
           title="Click Professor Hoot to hear him speak!"
         >
+          {/* Owl Character cut out cleanly without circle */}
           <img
             src="/src/assets/images/professor_hoot_avatar_1791681790591.jpg"
             alt="Professor Hoot, academic owl professor guide"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain mix-blend-multiply"
             referrerPolicy="no-referrer"
           />
 
-          {/* Speaking Indicator Badge */}
+          {/* Sound waves indicator when speaking */}
           {isSpeaking && (
-            <div className="absolute inset-0 bg-amber-500/20 flex items-center justify-center">
-              <span className="w-3 h-3 bg-amber-500 rounded-full animate-ping" />
+            <div className="absolute -top-1 -right-1 flex items-center gap-1 bg-amber-400 text-amber-950 font-bold px-2 py-0.5 rounded-full text-[10px] shadow-sm animate-pulse">
+              <span>Hoot!</span>
             </div>
           )}
         </div>
 
-        {/* Mascot Name Badge */}
-        <div className="mt-1 text-center">
-          <p className="text-xs font-bold text-amber-950 font-display">Prof. Hoot</p>
-          <p className="text-[10px] text-amber-800/80">Grammar Mentor</p>
+        {/* Mascot Name Banner */}
+        <div className="mt-0 text-center">
+          <p className="text-xs sm:text-sm font-extrabold text-amber-950 font-display flex items-center gap-1 justify-center">
+            <span>Prof. Hoot</span>
+            <span className="text-amber-600 animate-gentle-wiggle">🎓</span>
+          </p>
+          <p className="text-[10px] text-amber-800/90 font-medium">Click to hear advice!</p>
         </div>
       </div>
 

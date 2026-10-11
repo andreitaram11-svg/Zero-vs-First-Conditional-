@@ -13,6 +13,7 @@ import { GrammarMasterclass } from './components/GrammarMasterclass';
 import { InteractiveVideoLesson } from './components/InteractiveVideoLesson';
 import { PracticeHub } from './components/PracticeHub';
 import { CertificateModal } from './components/CertificateModal';
+import { ClassroomBackground } from './components/ClassroomBackground';
 import { sound } from './utils/audio';
 import { OWL_QUOTES } from './data/curriculum';
 
@@ -65,7 +66,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-amber-50/50 text-slate-800">
+    <div className="min-h-screen flex flex-col relative bg-linear-to-b from-amber-100/90 via-sky-50/70 to-emerald-50/70 text-slate-800 overflow-x-hidden">
+      {/* Playful School Classroom Background with Doodles, Sun, Pencils & Pennants */}
+      <ClassroomBackground />
+
       {/* Top Bar Navigation */}
       <Header
         currentSection={currentSection}
@@ -78,7 +82,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 relative z-10">
         {/* Interactive Guide Mascot (Professor Hoot) - Present across all sessions! */}
         <ProfessorHoot
           currentTip={owlTip}
@@ -120,17 +124,19 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-amber-200/80 bg-white/80 py-6 text-xs text-amber-950 text-center">
+      <footer className="border-t border-amber-300/80 bg-white/90 backdrop-blur-xs py-6 text-xs text-amber-950 text-center relative z-10">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="font-medium">
-            © Professor Hoot’s Grammar Academy · Zero vs. First Conditional Masterclass
+          <p className="font-semibold flex items-center justify-center gap-1.5">
+            <span>© Professor Hoot’s Grammar Academy</span>
+            <span>·</span>
+            <span>Zero vs. First Conditional Masterclass</span>
           </p>
-          <div className="flex items-center gap-4 text-amber-900/80">
-            <span>Classroom Context</span>
+          <div className="flex items-center gap-4 text-amber-900/90 font-medium">
+            <span>🏫 Classroom Context</span>
             <span aria-hidden="true">·</span>
-            <span>All Lessons in English</span>
+            <span>🇬🇧 All Lessons in English</span>
             <span aria-hidden="true">·</span>
-            <span>Interactive Audio & Games</span>
+            <span>🔔 Interactive Audio & Games</span>
           </div>
         </div>
       </footer>

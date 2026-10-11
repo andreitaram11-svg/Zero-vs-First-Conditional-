@@ -26,16 +26,16 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="sticky top-0 z-40 bg-amber-50/95 backdrop-blur-md border-b border-amber-200/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
         
-        {/* Zone 1: Single text element wordmark */}
+        {/* Zone 1: Single text element wordmark with playful motion */}
         <button
           onClick={() => {
             sound.playClick();
             onNavigate('instructions');
           }}
-          className="text-left font-display text-xl font-bold tracking-tight text-amber-950 hover:text-amber-800 transition-colors whitespace-nowrap shrink-0 flex items-center gap-2"
+          className="text-left font-display text-xl font-extrabold tracking-tight text-amber-950 hover:text-amber-800 transition-colors whitespace-nowrap shrink-0 flex items-center gap-2 group"
         >
-          <span className="text-2xl" role="img" aria-label="Owl">🦉</span>
-          <span>Professor Hoot’s Academy</span>
+          <span className="text-2xl inline-block group-hover:scale-125 transition-transform animate-gentle-bounce" role="img" aria-label="Owl">🦉</span>
+          <span className="animate-title-float">Professor Hoot’s Academy</span>
         </button>
 
         {/* Zone 2: 4–5 clean single-line text navigation links */}

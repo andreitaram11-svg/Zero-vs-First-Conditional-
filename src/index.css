@@ -16,6 +16,139 @@
   }
 }
 
+/* Lively Moving Title Animations */
+@keyframes title-float-wave {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-0.8deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(0.8deg);
+  }
+}
+
+@keyframes letter-pop {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-7px) scale(1.04);
+  }
+}
+
+@keyframes gentle-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg) scale(1.02);
+  }
+  75% {
+    transform: rotate(3deg) scale(1.02);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.7));
+  }
+}
+
+@keyframes cloud-drift {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(12px);
+  }
+}
+
+@keyframes plane-glide {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(8px, -10px) rotate(3deg);
+  }
+}
+
+@keyframes sun-spin-gentle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-title-float {
+  animation: title-float-wave 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+.animate-letter-pop {
+  animation: letter-pop 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+.animate-gentle-wiggle {
+  animation: gentle-wiggle 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-cloud-drift {
+  animation: cloud-drift 6s ease-in-out infinite;
+}
+
+.animate-plane-glide {
+  animation: plane-glide 5s ease-in-out infinite;
+}
+
+.animate-sun-spin {
+  animation: sun-spin-gentle 30s linear infinite;
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes wing-flutter {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+.animate-wing-flutter {
+  animation: wing-flutter 1.8s ease-in-out infinite;
+}
+
+/* Classroom / School Textures */
 .chalkboard-bg {
   background-color: #17382d;
   background-image: 
@@ -25,43 +158,10 @@
   background-size: 100% 100%, 20px 20px, 20px 20px;
 }
 
-.corkboard-pattern {
-  background-color: #f7ebd9;
-  background-image: radial-gradient(#dfc29e 0.75px, transparent 0.75px);
-  background-size: 12px 12px;
+.school-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(251, 191, 36, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-.notebook-lines {
-  background-color: #ffffff;
-  background-image: repeating-linear-gradient(transparent, transparent 27px, #e2e8f0 28px);
-  background-size: 100% 28px;
-}
-
-@keyframes gentle-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes wing-flutter {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-8deg);
-  }
-  75% {
-    transform: rotate(8deg);
-  }
-}
-
-.animate-gentle-bounce {
-  animation: gentle-bounce 3s ease-in-out infinite;
-}
-
-.animate-wing-flutter {
-  animation: wing-flutter 2s ease-in-out infinite;
-}

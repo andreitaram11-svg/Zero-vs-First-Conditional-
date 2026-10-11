@@ -27,9 +27,20 @@ export const InstructionsSection: React.FC<InstructionsSectionProps> = ({ onStar
             <span>ESL Mastery Course: School & Recess Edition</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
-            Zero Conditional <span className="text-amber-300">vs.</span> First Conditional
-          </h1>
+          {/* Moving Animated Title */}
+          <div className="animate-title-float">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight filter drop-shadow-md">
+              <span className="inline-block animate-letter-pop hover:scale-105 transition-transform text-white">
+                Zero Conditional
+              </span>{' '}
+              <span className="inline-block mx-1.5 px-3 py-1 rounded-2xl bg-amber-400 text-amber-950 font-black text-2xl sm:text-3xl align-middle shadow-md transform -rotate-3 animate-gentle-wiggle">
+                vs.
+              </span>{' '}
+              <span className="inline-block animate-letter-pop [animation-delay:400ms] hover:scale-105 transition-transform text-amber-200">
+                First Conditional
+              </span>
+            </h1>
+          </div>
 
           <p className="mt-4 text-base sm:text-lg text-amber-100/90 leading-relaxed font-sans">
             Welcome to high school grammar made clear, practical, and fun! Learn how to talk about permanent school rules, habitual consequences, and exciting future recess plans with Professor Hoot.
@@ -75,9 +86,12 @@ export const InstructionsSection: React.FC<InstructionsSectionProps> = ({ onStar
 
       {/* Academy Roadmap (4 Steps) */}
       <section className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-8 shadow-xs">
-        <h2 className="text-2xl font-bold font-display text-slate-900 tracking-tight mb-2">
-          Your 4-Step Learning Path
-        </h2>
+        <div className="animate-title-float">
+          <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight mb-2 flex items-center gap-2">
+            <span>Your 4-Step Learning Path</span>
+            <span className="text-xl animate-gentle-wiggle">🎒</span>
+          </h2>
+        </div>
         <p className="text-sm text-slate-600 mb-6">
           Follow these structured stages to build vocabulary, understand grammatical logic, watch realistic school scenarios, and achieve mastery.
         </p>
@@ -167,9 +181,9 @@ export const InstructionsSection: React.FC<InstructionsSectionProps> = ({ onStar
 
       {/* Quick Comparison Cheat Sheet */}
       <section className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-8 shadow-xs">
-        <div className="flex items-center gap-2 mb-4">
-          <HelpCircle className="w-5 h-5 text-amber-700" />
-          <h2 className="text-xl font-bold font-display text-slate-900">
+        <div className="flex items-center gap-2 mb-4 animate-title-float">
+          <HelpCircle className="w-6 h-6 text-amber-700 animate-gentle-wiggle" />
+          <h2 className="text-xl sm:text-2xl font-extrabold font-display text-slate-900 tracking-tight">
             Quick Cheat Sheet: What’s the difference?
           </h2>
         </div>

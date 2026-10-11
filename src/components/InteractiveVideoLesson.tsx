@@ -105,9 +105,12 @@ export const InteractiveVideoLesson: React.FC<InteractiveVideoLessonProps> = ({ 
               <Sparkles className="w-3.5 h-3.5" />
               <span>Multimedia Video & Classroom Dialogue</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight">
-              Interactive Video Classroom
-            </h2>
+            <div className="animate-title-float">
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight flex items-center gap-2">
+                <span>Interactive Video Classroom</span>
+                <span className="text-2xl animate-gentle-wiggle">🎬</span>
+              </h2>
+            </div>
             <p className="text-sm text-slate-600 mt-1 max-w-2xl">
               Experience situational dialogues with synchronized spoken audio, visual school settings, and real-time comprehension checkpoints!
             </p>
