@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Volume2, Sparkles, MessageCircle, RefreshCw } from 'lucide-react';
 import { sound, speakSentence } from '../utils/audio';
 import { OWL_QUOTES } from '../data/curriculum';
+import { owlAvatarUrl } from '../utils/assets';
 
 interface ProfessorHootProps {
   currentTip?: string;
@@ -18,6 +19,7 @@ export const ProfessorHoot: React.FC<ProfessorHootProps> = ({
 }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [tipIndex, setTipIndex] = useState(0);
+  const [imgError, setImgError] = useState(false);
 
   const tipsList = [
     OWL_QUOTES.welcome,
@@ -63,20 +65,72 @@ export const ProfessorHoot: React.FC<ProfessorHootProps> = ({
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') handleSpeak();
           }}
-          className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 cursor-pointer group transition-all duration-300 filter drop-shadow-md select-none ${
+          className={`relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 cursor-pointer group transition-all duration-300 filter drop-shadow-md select-none flex items-center justify-center ${
             isSpeaking
               ? 'animate-gentle-bounce scale-105'
               : 'hover:scale-105 hover:-rotate-2'
           }`}
           title="Click Professor Hoot to hear him speak!"
         >
-          {/* Owl Character cut out cleanly without circle */}
-          <img
-            src="/src/assets/images/professor_hoot_avatar_1791681790591.jpg"
-            alt="Professor Hoot, academic owl professor guide"
-            className="w-full h-full object-contain mix-blend-multiply"
-            referrerPolicy="no-referrer"
-          />
+          {!imgError ? (
+            /* Owl Character cut out cleanly without circle - using bundled asset */
+            <img
+              src={owlAvatarUrl}
+              alt="Professor Hoot, academic owl professor guide"
+              className="w-full h-full object-contain mix-blend-multiply"
+              referrerPolicy="no-referrer"
+              onError={() => {
+                setImgError(true);
+              }}
+            />
+          ) : (
+            /* Resilient SVG Owl Fallback ensuring zero broken image frames */
+            <svg
+              viewBox="0 0 120 120"
+              className="w-full h-full drop-shadow-sm select-none"
+              fill="none"
+            >
+              {/* Feet */}
+              <ellipse cx="48" cy="110" rx="9" ry="5" fill="#D97706" />
+              <ellipse cx="72" cy="110" rx="9" ry="5" fill="#D97706" />
+              {/* Body */}
+              <ellipse cx="60" cy="72" rx="34" ry="38" fill="#B45309" />
+              {/* Belly */}
+              <ellipse cx="60" cy="76" rx="24" ry="26" fill="#FDE68A" />
+              {/* Wings */}
+              <path d="M 28 62 Q 20 78 28 94 Q 38 82 34 68 Z" fill="#92400E" />
+              <path d="M 92 62 Q 100 78 92 94 Q 82 82 86 68 Z" fill="#92400E" />
+              {/* Pointer Stick */}
+              <line x1="90" y1="72" x2="114" y2="42" stroke="#78350F" strokeWidth="3.5" strokeLinecap="round" />
+              {/* Tweed Vest */}
+              <path d="M 44 68 L 60 88 L 76 68 L 72 88 L 48 88 Z" fill="#78350F" opacity="0.4" />
+              <circle cx="60" cy="76" r="2" fill="#FEF3C7" />
+              <circle cx="60" cy="83" r="2" fill="#FEF3C7" />
+              {/* Eyes */}
+              <circle cx="46" cy="52" r="13" fill="#FFFFFF" stroke="#92400E" strokeWidth="2" />
+              <circle cx="74" cy="52" r="13" fill="#FFFFFF" stroke="#92400E" strokeWidth="2" />
+              <circle cx="46" cy="52" r="7" fill="#451A03" />
+              <circle cx="74" cy="52" r="7" fill="#451A03" />
+              <circle cx="48" cy="50" r="2.5" fill="#FFFFFF" />
+              <circle cx="76" cy="50" r="2.5" fill="#FFFFFF" />
+              {/* Round Spectacles */}
+              <circle cx="46" cy="52" r="14" stroke="#F59E0B" strokeWidth="3" fill="none" />
+              <circle cx="74" cy="52" r="14" stroke="#F59E0B" strokeWidth="3" fill="none" />
+              <line x1="60" y1="52" x2="60" y2="52" stroke="#F59E0B" strokeWidth="3" />
+              {/* Beak */}
+              <polygon points="60,56 54,64 66,64" fill="#F59E0B" stroke="#D97706" strokeWidth="1" />
+              {/* Red Bowtie */}
+              <polygon points="54,68 66,68 60,72" fill="#EF4444" />
+              <polygon points="54,76 66,76 60,72" fill="#EF4444" />
+              <circle cx="60" cy="72" r="2.5" fill="#DC2626" />
+              {/* Mortarboard Graduation Cap */}
+              <polygon points="60,20 18,34 60,42 102,34" fill="#1E293B" />
+              <polygon points="46,38 74,38 70,47 50,47" fill="#0F172A" />
+              {/* Tassel */}
+              <line x1="60" y1="31" x2="94" y2="40" stroke="#F59E0B" strokeWidth="2.5" />
+              <circle cx="94" cy="42" r="3" fill="#F59E0B" />
+            </svg>
+          )}
 
           {/* Sound waves indicator when speaking */}
           {isSpeaking && (

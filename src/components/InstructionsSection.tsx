@@ -2,6 +2,7 @@ import React from 'react';
 import { NavSection } from '../types';
 import { BookOpen, CheckCircle2, Play, Award, Volume2, Sparkles, HelpCircle } from 'lucide-react';
 import { sound, speakSentence } from '../utils/audio';
+import { classroomUrl } from '../utils/assets';
 
 interface InstructionsSectionProps {
   onStartLearning: (target: NavSection) => void;
@@ -14,7 +15,7 @@ export const InstructionsSection: React.FC<InstructionsSectionProps> = ({ onStar
       <section className="relative rounded-3xl overflow-hidden border border-amber-300 shadow-md bg-linear-to-r from-amber-900/90 via-amber-800/90 to-amber-950 text-white">
         <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none">
           <img
-            src="/src/assets/images/hero_school_classroom_1791681771085.jpg"
+            src={classroomUrl}
             alt="Classroom background"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"

@@ -6,6 +6,7 @@ import {
   CompleteQuestion,
   VideoLesson
 } from '../types';
+import { classroomUrl, recessUrl } from '../utils/assets';
 
 export const VOCABULARY_LIST: VocabItem[] = [
   {
@@ -136,7 +137,7 @@ export const VIDEO_LESSONS: VideoLesson[] = [
     title: 'Episode 1: The Chemistry Lab Rules (Zero Conditional)',
     description: 'Learn how school laboratory safety rules and scientific facts always use Zero Conditional (If + Present Simple, Present Simple).',
     focus: 'zero',
-    image: '/src/assets/images/hero_school_classroom_1791681771085.jpg',
+    image: classroomUrl,
     scenes: [
       {
         id: 's1-1',
@@ -190,7 +191,7 @@ export const VIDEO_LESSONS: VideoLesson[] = [
     title: 'Episode 2: The Rainy Recess Dilemma (First Conditional)',
     description: 'Explore how students talk about specific future possibilities, weather predictions, and real plans for tomorrow’s break.',
     focus: 'first',
-    image: '/src/assets/images/school_recess_yard_1791681782303.jpg',
+    image: recessUrl,
     scenes: [
       {
         id: 's2-1',
